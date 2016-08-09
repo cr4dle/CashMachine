@@ -4,7 +4,7 @@ using System;
 
 namespace CashMachine.Services
 {
-    public class CashMachineService : ICashMachineService, IWithdrawService
+    public class CashMachineService : ICashMachineService
     {
         private IMoneyRepository _moneyRepository;
         private IWithdrawService _withdrawervice;
