@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashMachine", "CashMachine\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashMachine.Tests", "CashMachine.Tests\CashMachine.Tests.csproj", "{7CAA64DF-9B02-4343-A317-EFED8A36F54F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashMachineWeb", "CashMachineWeb\CashMachineWeb.csproj", "{2E80C571-3C7E-4456-A210-7DB0F9EEF4C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7CAA64DF-9B02-4343-A317-EFED8A36F54F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CAA64DF-9B02-4343-A317-EFED8A36F54F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CAA64DF-9B02-4343-A317-EFED8A36F54F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E80C571-3C7E-4456-A210-7DB0F9EEF4C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E80C571-3C7E-4456-A210-7DB0F9EEF4C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E80C571-3C7E-4456-A210-7DB0F9EEF4C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E80C571-3C7E-4456-A210-7DB0F9EEF4C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

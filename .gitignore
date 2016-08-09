@@ -7,3 +7,7 @@ CashMachine.Tests/out/
 CashMachine.Tests/obj/
 CashMachine.Tests/Debug/
 packages/
+CashMachineWeb/bin/
+CashMachineWeb/out/
+CashMachineWeb/obj/
+CashMachineWeb/Debug/
