@@ -106,25 +106,41 @@ namespace CashMachine.Repositories
             };
         }
 
+        /// <summary>
+        /// It will be used to display the currency symbol
+        /// </summary>
+        /// <returns></returns>
         public CashMachineModel GetAll()
         {
             return _cashMachine;
         }
 
+        /// <summary>
+        /// Returns all the coins
+        /// </summary>
+        /// <returns>Returns the coins with descending order</returns>
         public List<MoneyModel> GetAllCoins()
         {
-            var onlyCoins = _cashMachine.Money.Where(x => !x.isNote).ToList();
+            var onlyCoins = _cashMachine.Money.Where(x => !x.isNote).OrderBy(x=>x.Value).ToList();
 
             return onlyCoins;
         }
 
+        /// <summary>
+        /// Returns all the notes
+        /// </summary>
+        /// <returns>Returns the notes with descending order</returns>
         public List<MoneyModel> GetAllNotes()
         {
-            var onlyNotes = _cashMachine.Money.Where(x => x.isNote).ToList();
+            var onlyNotes = _cashMachine.Money.Where(x => x.isNote).OrderBy(x => x.Value).ToList();
 
             return onlyNotes;
         }
 
+        /// <summary>
+        /// Deduct the quantity taken
+        /// </summary>
+        /// <param name="money"></param>
         public void Withdraw(MoneyModel money)
         {
             var dbMoney = _cashMachine.Money.Where(x => x.Name == money.Name).SingleOrDefault();
