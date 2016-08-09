@@ -124,5 +124,16 @@ namespace CashMachine.Repositories
 
             return onlyNotes;
         }
+
+        public void Withdraw(MoneyModel money)
+        {
+            var dbMoney = _cashMachine.Money.Where(x => x.Name == money.Name).SingleOrDefault();
+            
+            //It should exists always
+            if(dbMoney != null)
+            {
+                dbMoney.Quantity -= money.Quantity;
+            }
+        }
     }
 }

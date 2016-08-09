@@ -1,4 +1,5 @@
-﻿using CashMachine.Interfaces;
+﻿using CashMachine.DTO;
+using CashMachine.Interfaces;
 using System;
 
 namespace CashMachine.Services
@@ -30,7 +31,7 @@ namespace CashMachine.Services
             return balance;
         }
 
-        public double Withdraw(double quantity)
+        public WithdrawDTO Withdraw(double quantity)
         {
             return _withdrawervice.Withdraw(quantity);
         }

@@ -1,7 +1,9 @@
-﻿namespace CashMachine.Interfaces
+﻿using CashMachine.DTO;
+
+namespace CashMachine.Interfaces
 {
     public interface IWithdrawService
     {
-        double Withdraw(double quantity);
+        WithdrawDTO Withdraw(double quantity);
     }
 }

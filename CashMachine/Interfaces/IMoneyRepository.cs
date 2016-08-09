@@ -8,5 +8,6 @@ namespace CashMachine.Interfaces
         CashMachineModel GetAll();
         List<MoneyModel> GetAllNotes();
         List<MoneyModel> GetAllCoins();
+        void Withdraw(MoneyModel money);
     }
 }
