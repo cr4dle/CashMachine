@@ -68,6 +68,7 @@ namespace CashMachine.App_Start
 
             // Service
             kernel.Bind<ICashMachineService>().To<CashMachineService>().InRequestScope();
+            //kernel.Bind<IWithdrawService>().To<CashMachineService>().InRequestScope();
             kernel.Bind<IWithdrawService>().To<LeastNumberOfItemsService>().InRequestScope().Named("LeastNumberOfItems");
             kernel.Bind<IWithdrawService>().To<Highest20NotesService>().InRequestScope().Named("Highest20Notes");
         }        
