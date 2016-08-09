@@ -121,7 +121,7 @@ namespace CashMachine.Repositories
         /// <returns>Returns the coins with descending order</returns>
         public List<MoneyModel> GetAllCoins()
         {
-            var onlyCoins = _cashMachine.Money.Where(x => !x.isNote).OrderBy(x=>x.Value).ToList();
+            var onlyCoins = _cashMachine.Money.Where(x => !x.isNote).OrderByDescending(x=>x.Value).ToList();
 
             return onlyCoins;
         }
@@ -132,7 +132,7 @@ namespace CashMachine.Repositories
         /// <returns>Returns the notes with descending order</returns>
         public List<MoneyModel> GetAllNotes()
         {
-            var onlyNotes = _cashMachine.Money.Where(x => x.isNote).OrderBy(x => x.Value).ToList();
+            var onlyNotes = _cashMachine.Money.Where(x => x.isNote).OrderByDescending(x => x.Value).ToList();
 
             return onlyNotes;
         }
@@ -143,7 +143,7 @@ namespace CashMachine.Repositories
         /// <param name="money"></param>
         public void Withdraw(MoneyModel money)
         {
-            var dbMoney = _cashMachine.Money.Where(x => x.Name == money.Name).SingleOrDefault();
+            var dbMoney = _cashMachine.Money.Where(x => x.Name == money.Name && x.isNote == money.isNote).SingleOrDefault();
             
             //It should exists always
             if(dbMoney != null)
