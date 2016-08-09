@@ -33,7 +33,10 @@ namespace CashMachine.Services
 
         public WithdrawDTO Withdraw(double quantity)
         {
-            return _withdrawervice.Withdraw(quantity);
+            var withdrawDTO = _withdrawervice.Withdraw(quantity);
+            withdrawDTO.Balance = GetBalance();
+
+            return withdrawDTO;
         }
     }
 }
