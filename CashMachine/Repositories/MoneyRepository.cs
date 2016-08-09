@@ -63,42 +63,42 @@ namespace CashMachine.Repositories
                     new MoneyModel
                     {
                         isNote = false,
-                        Name = "50",
+                        Name = "0.50",
                         Value = 0.50,
                         Quantity = 100
                     },
                     new MoneyModel
                     {
                         isNote = false,
-                        Name = "20",
+                        Name = "0.20",
                         Value = 0.20,
                         Quantity = 100
                     },
                     new MoneyModel
                     {
                         isNote = false,
-                        Name = "10",
+                        Name = "0.10",
                         Value = 0.10,
                         Quantity = 100
                     },
                     new MoneyModel
                     {
                         isNote = false,
-                        Name = "5",
+                        Name = "0.05",
                         Value = 0.05,
                         Quantity = 100
                     },
                     new MoneyModel
                     {
                         isNote = false,
-                        Name = "2",
+                        Name = "0.02",
                         Value = 0.02,
                         Quantity = 100
                     },
                     new MoneyModel
                     {
                         isNote = false,
-                        Name = "1",
+                        Name = "0.01",
                         Value = 0.01,
                         Quantity = 100
                     }
