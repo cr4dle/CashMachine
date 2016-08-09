@@ -9,6 +9,8 @@ namespace CashMachine
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableCors();
+
             // Web API configuration and services
 
             // Web API routes
@@ -16,8 +18,8 @@ namespace CashMachine
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{quantity}",
+                defaults: new { quantity = RouteParameter.Optional }
             );
         }
     }
