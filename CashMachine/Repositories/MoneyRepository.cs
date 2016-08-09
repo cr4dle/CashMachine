@@ -7,10 +7,11 @@ namespace CashMachine.Repositories
 {
     public class MoneyRepository : IMoneyRepository
     {
-        private CashMachineModel _cashMachine;
+        private readonly CashMachineModel _cashMachine;
 
         public MoneyRepository()
         {
+            // Mock the DB
             _cashMachine = new CashMachineModel
             {
                 CurrencySymbol = "£",
