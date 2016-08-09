@@ -10,7 +10,9 @@ namespace CashMachine.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-
+    using Interfaces;
+    using Repositories;
+    using Services;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -61,6 +63,12 @@ namespace CashMachine.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            // Repository
+            kernel.Bind<IMoneyRepository>().To<MoneyRepository>().InRequestScope();
+
+            // Service
+            kernel.Bind<ICashMachineService>().To<CashMachineService>().InRequestScope();
+            kernel.Bind<IWithdrawService>().To<LeastNumberOfItemsService>().InRequestScope().Named("LeastNumberOfItems");
         }        
     }
 }

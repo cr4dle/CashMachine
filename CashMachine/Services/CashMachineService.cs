@@ -1,5 +1,6 @@
 ﻿using CashMachine.DTO;
 using CashMachine.Interfaces;
+using Ninject;
 using System;
 
 namespace CashMachine.Services
@@ -9,7 +10,8 @@ namespace CashMachine.Services
         private IMoneyRepository _moneyRepository;
         private IWithdrawService _withdrawervice;
 
-        public CashMachineService(IMoneyRepository moneyRepository, IWithdrawService withdrawService)
+        // If we change the Named property, we can swap the module
+        public CashMachineService(IMoneyRepository moneyRepository, [Named("LeastNumberOfItems")] IWithdrawService withdrawService)
         {
             if (moneyRepository == null) throw new ArgumentNullException(nameof(moneyRepository));
             if (withdrawService == null) throw new ArgumentNullException(nameof(withdrawService));
