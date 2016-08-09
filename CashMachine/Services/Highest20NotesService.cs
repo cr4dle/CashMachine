@@ -101,9 +101,9 @@ namespace CashMachine.Services
         {
             MoneyModel tempMoneyModel = null;
 
-            if (money.Quantity > 0)
+            if (money.Quantity > 0 && money.Value <= quantity)
             {
-                int items = Convert.ToInt32(quantity / money.Value);
+                int items = Convert.ToInt32(Math.Truncate(quantity / money.Value));
                 if (items > 0)
                 {
                     if (money.Quantity >= items)
