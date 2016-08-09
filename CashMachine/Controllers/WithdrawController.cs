@@ -2,9 +2,11 @@
 using CashMachine.Interfaces;
 using System;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace CashMachine.Controllers
 {
+    [EnableCors(origins: "http://localhost:20361", headers: "*", methods: "*")]
     public class WithdrawController : ApiController
     {
         private ICashMachineService _cashMachineService;
