@@ -1,0 +1,9 @@
+CashMachine/bin/
+CashMachine/out/
+CashMachine/obj/
+CashMachine/Debug/
+CashMachine.Tests/bin/
+CashMachine.Tests/out/
+CashMachine.Tests/obj/
+CashMachine.Tests/Debug/
+packages/
