@@ -1,5 +1,5 @@
 ﻿<div ng-show="balance !== undefined">
-    <div ng-repeat="detail in withdrawDetails">
+    <div ng-repeat="detail in items track by $index">
         <span>£{{detail.Name}}x{{detail.Quantity}}</span>
     </div>
 

@@ -26,9 +26,9 @@ angular.module('init', [])
         restrict: 'E',
         scope: {
             balance: '=balance',
-            withdrawDetails: '=withdrawDetails'
+            items: '=items'
         },
-        controller: ['$scope', '$http', function ($scope, $http) {
+        controller: ['$scope', function ($scope) {
             
         }]
     };
