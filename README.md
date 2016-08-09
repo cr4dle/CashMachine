@@ -1,0 +1,16 @@
+# Cash Machine
+It returns the cash with two different strategies. The strategy by default is to minimize the number of notes.
+
+Notes available:
+100x1p
+100x2p
+100x5p
+100x10p
+100x20p
+100x50p
+100x£1
+100x£2
+50x£5
+50x£10
+50x£20
+50x£50
