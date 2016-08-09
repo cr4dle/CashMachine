@@ -5,7 +5,7 @@ angular.module('init', [])
     $scope.amount = 120;
 
     $scope.withdraw = function () {
-        $http.get('http://localhost:14926/api/Withdraw/' + $scope.amount)
+        $http.get('http://localhost:14926/api/Withdraw/' + $scope.amount + '/')
         .then(function mySucces(response) {
             let result = response.data;
 

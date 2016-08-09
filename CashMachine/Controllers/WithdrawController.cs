@@ -20,7 +20,7 @@ namespace CashMachine.Controllers
             _cashMachineService = cashMachineService;
         }
 
-        // GET: api/Withdraw/120
+        // GET: api/Withdraw/120.50/
         public HttpResponseMessage Get(double quantity)
         {
             var withdrawDetails = _cashMachineService.Withdraw(quantity);
