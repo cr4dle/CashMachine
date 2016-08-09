@@ -1,8 +1,10 @@
 ﻿using CashMachine.DTO;
 using CashMachine.Interfaces;
 using System;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Script.Serialization;
 
 namespace CashMachine.Controllers
 {
@@ -19,10 +21,13 @@ namespace CashMachine.Controllers
         }
 
         // GET: api/Withdraw/120
-        public WithdrawDTO Get(double quantity)
+        public HttpResponseMessage Get(double quantity)
         {
-            var debug = _cashMachineService.Withdraw(quantity);
-            return debug;
+            var withdrawDetails = _cashMachineService.Withdraw(quantity);
+
+            var jsonData = new JavaScriptSerializer().Serialize(withdrawDetails);
+
+            return JsonResponse.Create(Request, jsonData);
         }
     }
 }
