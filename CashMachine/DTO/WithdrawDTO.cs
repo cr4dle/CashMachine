@@ -10,7 +10,7 @@ namespace CashMachine.DTO
     {
         public bool EnoughCash{ get; set; }
 
-        public double Balance { get; set; }
+        public string Balance { get; set; }
 
         public List<MoneyModel> Withdraw { get; set; }
     }

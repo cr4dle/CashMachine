@@ -36,7 +36,8 @@ namespace CashMachine.Services
         public WithdrawDTO Withdraw(double quantity)
         {
             var withdrawDTO = _withdrawervice.Withdraw(quantity);
-            withdrawDTO.Balance = GetBalance();
+            var balance = GetBalance();
+            withdrawDTO.Balance = string.Format("£{0:N2}", balance);
 
             return withdrawDTO;
         }
