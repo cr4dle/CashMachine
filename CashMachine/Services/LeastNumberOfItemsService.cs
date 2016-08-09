@@ -27,117 +27,88 @@ namespace CashMachine.Services
             };
 
             var notes = _moneyRepository.GetAllNotes();
-            for(int i=0; i < notes.Count; i++)
+            for (int i = 0; i < notes.Count; i++)
             {
-                if (notes[i].Quantity > 0)
+                var tempMoney = Check(notes[i], quantity);
+                if (tempMoney != null)
                 {
-                    int items = Convert.ToInt32(quantity / notes[i].Value);
-                    if (items > 0)
-                    {
-                        if (notes[i].Quantity >= items)
-                        {
-                            var tempMoneyToWithdraw = new MoneyModel
-                            {
-                                isNote = notes[i].isNote,
-                                Name = notes[i].Name,
-                                Quantity = items,
-                                Value = notes[i].Value
-                            };
+                    // Deduct the quantity to withdraw
+                    quantity -= tempMoney.Value * tempMoney.Quantity;
 
-                            // Deduct the quantity to withdraw
-                            quantity -= notes[i].Value * items;
+                    // Add to the return object
+                    withdrawDTO.Withdraw.Add(tempMoney);
+                    // Withdraw value
+                    _moneyRepository.Withdraw(tempMoney);
+                }
 
-                            // Add to the return object
-                            withdrawDTO.Withdraw.Add(tempMoneyToWithdraw);
-                            // Withdraw value
-                            _moneyRepository.Withdraw(tempMoneyToWithdraw);
-                        }
-                        else
-                        {
-                            var tempMoneyToWithdraw = new MoneyModel
-                            {
-                                isNote = notes[i].isNote,
-                                Name = notes[i].Name,
-                                Quantity = notes[i].Quantity,
-                                Value = notes[i].Value
-                            };
-
-                            // Deduct the quantity to withdraw
-                            quantity -= notes[i].Value * notes[i].Quantity;
-
-                            // Add to the return object
-                            withdrawDTO.Withdraw.Add(tempMoneyToWithdraw);
-                            // Withdraw value
-                            _moneyRepository.Withdraw(tempMoneyToWithdraw);
-                        }
-
-                        if (quantity == 0)
-                        {
-                            return withdrawDTO;
-                        }
-                    }
+                if (quantity == 0)
+                {
+                    return withdrawDTO;
                 }
             }
 
             var coins = _moneyRepository.GetAllCoins();
             for (int i = 0; i < coins.Count; i++)
             {
-                if (coins[i].Quantity > 0)
+                var tempMoney = Check(coins[i], quantity);
+                if (tempMoney != null)
                 {
-                    int items = Convert.ToInt32(quantity / coins[i].Value);
-                    if (items > 0)
-                    {
-                        if (coins[i].Quantity >= items)
-                        {
-                            var tempMoneyToWithdraw = new MoneyModel
-                            {
-                                isNote = coins[i].isNote,
-                                Name = coins[i].Name,
-                                Quantity = items,
-                                Value = coins[i].Value
-                            };
+                    // Deduct the quantity to withdraw
+                    quantity -= tempMoney.Value * tempMoney.Quantity;
 
-                            // Deduct the quantity to withdraw
-                            quantity -= coins[i].Value * items;
+                    // Add to the return object
+                    withdrawDTO.Withdraw.Add(tempMoney);
+                    // Withdraw value
+                    _moneyRepository.Withdraw(tempMoney);
+                }
 
-                            // Add to the return object
-                            withdrawDTO.Withdraw.Add(tempMoneyToWithdraw);
-                            // Withdraw value
-                            _moneyRepository.Withdraw(tempMoneyToWithdraw);
-                        }
-                        else
-                        {
-                            var tempMoneyToWithdraw = new MoneyModel
-                            {
-                                isNote = coins[i].isNote,
-                                Name = coins[i].Name,
-                                Quantity = coins[i].Quantity,
-                                Value = coins[i].Value
-                            };
-
-                            // Deduct the quantity to withdraw
-                            quantity -= coins[i].Value * coins[i].Quantity;
-
-                            // Add to the return object
-                            withdrawDTO.Withdraw.Add(tempMoneyToWithdraw);
-                            // Withdraw value
-                            _moneyRepository.Withdraw(tempMoneyToWithdraw);
-                        }
-
-                        if (quantity == 0)
-                        {
-                            return withdrawDTO;
-                        }
-                    }
+                if (quantity == 0)
+                {
+                    return withdrawDTO;
                 }
             }
-            
-            if(quantity > 0)
+
+            if (quantity > 0)
             {
                 withdrawDTO.EnoughCash = false;
             }
 
             return withdrawDTO;
+        }
+
+        private MoneyModel Check(MoneyModel money, double quantity)
+        {
+            MoneyModel tempMoneyModel = null;
+
+            if (money.Quantity > 0 && money.Value <= quantity)
+            {
+                int items = Convert.ToInt32(Math.Truncate(quantity / money.Value));
+                if (items > 0)
+                {
+                    if (money.Quantity >= items)
+                    {
+                        tempMoneyModel = new MoneyModel
+                        {
+                            isNote = money.isNote,
+                            Name = money.Name,
+                            Quantity = items,
+                            Value = money.Value
+                        };
+                    }
+                    else
+                    {
+                        tempMoneyModel = new MoneyModel
+                        {
+                            isNote = money.isNote,
+                            Name = money.Name,
+                            Quantity = money.Quantity,
+                            Value = money.Value
+                        };
+                    }
+                }
+            }
+
+            return tempMoneyModel;
         }
     }
 }
